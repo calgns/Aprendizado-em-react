@@ -1,0 +1,63 @@
+body{background-color: #393d44; color: white;}
+
+img{max-width: 100%;}
+
+section {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #282c34;
+  min-height: 100vh;
+  padding-top: 20px;
+  color: white;
+}
+
+hr{
+  width: 40%;
+  margin-bottom: 5px;
+}
+
+.posts {
+  margin: 10px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.posts h1{
+  font-size: 1.5rem;
+}
+
+.posts p{
+  font-size: 1.125rem;
+}
+
+.post {
+  background: #383e49;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .8);
+  transition: all .1s linear;
+}
+
+.post:hover{
+  scale: 1.15;
+}
+
+.post-card{
+  margin: 20px;
+  /* padding-bottom: 20px; */
+}
+
+
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-360deg);
+  }
+}

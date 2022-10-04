@@ -1,0 +1,42 @@
+body{background-color: #393d44; color: white;}
+
+img{max-width: 100%; border-top-left-radius: 5px; border-top-right-radius: 5px;}
+
+section.section-container {
+  /* background-color: #282c34; */
+  border: red 1px solid;
+  /* max-width: 1200px; */
+  min-height: 100vh;
+  padding-top: 20px;
+  padding-bottom: 150px;
+  /* color: white; */
+  /* margin: 0 auto; */
+}
+
+div.in, .more-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.more-container button{
+  
+}
+
+.in h1{
+  margin: 0 auto;
+}
+
+.search-container{
+  margin-bottom: 30px;
+  display: grid;
+}
+
+.search-container h6{
+  margin: 80px auto;
+  font-size: 3rem;
+}
+
+hr{
+  width: 40%;
+  margin-bottom: 5px;
+}
