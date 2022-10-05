@@ -1,7 +1,7 @@
 .post-card {
   /* background: #383e49; */
-  background-color: rgb(204, 202, 202);
-  color: black;
+  background-color: #353a3c;
+  color: aliceblue;
   box-shadow: 0 0 30px rgba(0, 0, 0, .7);
   transition: all .1s linear;
   border-radius: 5px;

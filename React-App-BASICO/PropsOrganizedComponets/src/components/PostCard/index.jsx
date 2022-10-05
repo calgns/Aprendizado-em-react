@@ -3,6 +3,7 @@ import './styles.css';
 export const PostCard = ({title, body, id, cover}) => (
   <div className="post-card">
     <img src={cover} alt={title} />
+    
     <div className="card-text">
       <h2>{title} && {id}</h2>
       <hr/>
