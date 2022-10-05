@@ -1,0 +1,9 @@
+#text-input {
+  margin: 20px auto;
+  padding: 5px 10px;
+  font-size: 35px;
+  background-color: #2b2a33;
+  color: aliceblue;
+  /* height: 35px; */
+  width:80%;
+}

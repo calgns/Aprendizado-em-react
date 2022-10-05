@@ -1,0 +1,15 @@
+.posts {
+  margin: 10px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.posts h1{
+  font-size: 1.5rem;
+}
+
+.posts p{
+  font-size: 1.125rem;
+}
