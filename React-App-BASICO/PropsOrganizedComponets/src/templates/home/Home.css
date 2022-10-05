@@ -4,13 +4,13 @@ img{max-width: 100%; border-top-left-radius: 5px; border-top-right-radius: 5px;}
 
 section.section-container {
   /* background-color: #282c34; */
-  border: red 1px solid;
-  /* max-width: 1200px; */
+  /* border: red 1px solid; */
+  max-width: 1400px;
   min-height: 100vh;
   padding-top: 20px;
   padding-bottom: 150px;
   /* color: white; */
-  /* margin: 0 auto; */
+  margin: 0 auto;
 }
 
 div.in, .more-container{
@@ -18,9 +18,7 @@ div.in, .more-container{
   flex-direction: column;
 }
 
-.more-container button{
-  
-}
+.more-container button{}
 
 .in h1{
   margin: 0 auto;
