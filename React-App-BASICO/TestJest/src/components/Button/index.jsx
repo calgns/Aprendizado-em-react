@@ -1,11 +1,17 @@
-import { Component } from "react";
+// import { Component } from "react";
+import P from "prop-types";
 import "./styles.css";
 
-export class MoreBtn extends Component {
-  render() {
-    const {text, oC, isD} = this.props;
-    return (<button disabled={isD} onClick={oC}>{text}</button>)
+export const LoadMoreBtn = ({ text, onClicky, isDisabled = false }) => (
+  <button className="button" disabled={isDisabled} onClick={onClicky}>
+    {text}
+  </button>
+);
 
-  }
+LoadMoreBtn.defaultProps = { isDisabled: false };
 
-}
+LoadMoreBtn.propTypes = {
+  text: P.string.isRequired,
+  onClicky: P.func.isRequired,
+  isDisabled: P.bool,
+};

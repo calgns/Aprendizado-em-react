@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoadMoreBtn /> should match snapshot 1`] = `
+<button
+  class="button"
+  disabled=""
+>
+  LoAd mOrE
+</button>
+`;
