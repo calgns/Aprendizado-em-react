@@ -3,6 +3,7 @@ import {
   screen,
   waitForElementToBeRemoved,
 } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 import { rest } from "msw";
 import { setupServer } from "msw/node";
@@ -58,20 +59,66 @@ describe("<Home />", () => {
   it("should renders search, posts and load more", async () => {
     render(<Home />);
     const notFound = screen.getByText(/Search not found./i);
-
-    expect.assertions(3);
-
     await waitForElementToBeRemoved(notFound);
+
+    // expect.assertions(3);
+
     const search = screen.getByPlaceholderText(/Type Your Search/i);
-    expect(search).toBeInTheDocument();
+    // expect(search).toBeInTheDocument();
 
-    const imgs = screen.getAllByRole("img", { name: /title/i });
-    expect(imgs).toHaveLength(3);
+    expect(
+      screen.getByRole("heading", { name: /title 1/i })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /title 2/i })
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("heading", { name: "title 3" })
+    ).not.toBeInTheDocument();
 
-    const btn = screen.getByRole("button", { name: /load more/i });
-    expect(btn).toBeInTheDocument();
+    userEvent.type(search, "title 1");
+    expect(
+      screen.getByRole("heading", { name: "title 1 1" })
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("heading", { name: "title 2 2" })
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("heading", { name: "title 3 3" })
+    ).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "Search: title 1" })
+    ).toBeInTheDocument();
+
+    userEvent.clear(search);
+    expect(
+      screen.getByRole("heading", { name: "title 1 1" })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "title 2 2" })
+    ).toBeInTheDocument();
+
+    userEvent.type(search, "post does not exist");
+    expect(screen.getByText("Search not found.")).toBeInTheDocument();
+  });
+
+  it("should click on load more btn & load more posts", async () => {
+    render(<Home />);
+    const notFound = screen.getByText(/Search not found./i);
+    await waitForElementToBeRemoved(notFound);
+
+    const LMBtn = screen.getByRole("button", { name: /load more/i });
+
+    expect(
+      screen.queryByRole("heading", { name: "title 3 3" })
+    ).not.toBeInTheDocument();
+
+    userEvent.click(LMBtn);
+
+    expect(
+      screen.getByRole("heading", { name: "title 3 3" })
+    ).toBeInTheDocument();
 
     screen.debug();
-    // expect(notFound).toBeInTheDocument();
-  }, 10000);
+  });
 });
