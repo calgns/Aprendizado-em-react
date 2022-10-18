@@ -1,5 +1,5 @@
-import "./styles.css";
-import P from "prop-types";
+import './styles.css';
+import P from 'prop-types';
 
 export const PostCard = ({ title, body, id, cover }) => (
   <div className="post-card">

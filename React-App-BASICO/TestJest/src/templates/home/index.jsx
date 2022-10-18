@@ -12,7 +12,7 @@ export const Home = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   // const [postsPerPage, setPostsPerPage] = useState(11);
-  const [postsPerPage] = useState(2);
+  const [postsPerPage] = useState(11);
 
   const noMorePosts = page + postsPerPage >= allPosts.length;
   const filteredPosts = searchValue

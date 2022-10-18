@@ -4,8 +4,8 @@ import { Component } from "react";
 
 class App extends Component {
   // public class fields / class fields elimina constructor
-    handlepClick = this.handlepClick.bind(this); // react não faz binding, this;
-    state = { name: "Luiz Otávio", counter: 0 };
+  handlepClick = this.handlepClick.bind(this); // react não faz binding, this;
+  state = { name: "Luiz Otávio", counter: 0 };
 
   // constructor(props) {
   //   super(props);
@@ -19,11 +19,12 @@ class App extends Component {
     console.log(`<p> Clicado ${name}`);
   }
 
-  handleAClick = (event) => { //  para não fazer binding você usa arrow functions
+  handleAClick = (event) => {
+    //  para não fazer binding você usa arrow functions
     event.preventDefault();
     const { counter } = this.state;
     this.setState({ counter: counter + 1 });
-  }
+  };
 
   render() {
     // const name = this.state.name;
