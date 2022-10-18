@@ -1,25 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
-import { Component } from 'react';
+import logo from './logo.svg';
+import { useState } from 'react';
 
-// function App() {}
+function App() {
+  const [reverse, setReverse] = useState(false);
+  const [counter, setCounter] = useState(0);
+  const reverseClass = reverse ? 'App-logo-R' : '';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+  const handleClick = () => {
+    setReverse(!reverse);
+  };
+
+  const handleIncrement = () => {
+    setCounter((c) => c + 1); // dá na mesma usar direto ou com callback
+  };
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className={`App-logo ${reverseClass}`} alt="logo" />
+
+        <h1>Contador: {counter}</h1>
+
+        <p>
+          <button className="btn" type="button" onClick={handleClick}>
+            Reverse {reverseClass}
+          </button>
+        </p>
+        <p>
+          <button className="btn" type="button" onClick={handleIncrement}>
+            Increment {counter}
+          </button>
+        </p>
+      </header>
+    </div>
+  );
 }
 
 export default App;
