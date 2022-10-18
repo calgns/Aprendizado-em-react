@@ -1,38 +1,51 @@
 import './App.css';
-import logo from './logo.svg';
-import { useState } from 'react';
+// import logo from './logo.svg';
+import { useEffect, useState } from 'react';
+
+// FIXME: Regra dos hooks
+// https://pt-br.reactjs.org/docs/hooks-rules.html
+
+const eventFn = () => {
+  console.log('h1 clicado');
+};
 
 function App() {
-  const [reverse, setReverse] = useState(false);
   const [counter, setCounter] = useState(0);
-  const reverseClass = reverse ? 'App-logo-R' : '';
+  const [counter2, setCounter2] = useState(0);
 
-  const handleClick = () => {
-    setReverse(!reverse);
-  };
+  // componentDidUpdate - executa toda vez que o component atualiza
+  // useEffect(() => {
+  //   console.log('componentDidUpdate');
+  // });
 
-  const handleIncrement = () => {
-    setCounter((c) => c + 1); // dá na mesma usar direto ou com callback
-  };
+  // componentDidMount - executa 1x
+  // useEffect(() => {
+  //   console.log('componentDidMount');
+  // }, []);
+
+  // componentDidMount - executa enquanto h1 for clicado
+  useEffect(() => {
+    document.querySelector('h1')?.addEventListener('click', eventFn);
+
+    // componentWillUmount - limpeza
+    return () => {
+      document.querySelector('h1')?.removeEventListener('click', eventFn);
+    };
+  }, []);
+
+  // Com dependência - executa toda vez que a dependência mudar
+  useEffect(() => {
+    console.log('C1:', counter, 'C2:', counter2);
+  }, [counter, counter2]);
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className={`App-logo ${reverseClass}`} alt="logo" />
-
-        <h1>Contador: {counter}</h1>
-
-        <p>
-          <button className="btn" type="button" onClick={handleClick}>
-            Reverse {reverseClass}
-          </button>
-        </p>
-        <p>
-          <button className="btn" type="button" onClick={handleIncrement}>
-            Increment {counter}
-          </button>
-        </p>
-      </header>
+      <p>Teste 3</p>
+      <h1>
+        C1: {counter} C2: {counter2}{' '}
+      </h1>
+      <button onClick={() => setCounter(counter + 1)}>+</button>
+      <button onClick={() => setCounter2(counter2 + 1)}>+ (2)</button>
     </div>
   );
 }
