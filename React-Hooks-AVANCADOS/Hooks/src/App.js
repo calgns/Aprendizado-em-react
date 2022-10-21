@@ -1,15 +1,40 @@
-// import P from 'prop-types';
+import { useReducer } from 'react';
 import './App.css';
-import { Div } from './Components/Div';
-import { AppContext } from './contexts/App';
-// import React, { useContext, useState } from 'react';
-// { useState, useEffect, useMemo, useRef }
+
+const globalState = {
+  title: 'O título que contexto',
+  body: 'O body do contexto',
+  counter: 0,
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'muda': {
+      console.log('chamou muda', action.payload);
+      return { ...state, title: action.payload };
+    }
+    case 'inverter': {
+      console.log('chamou inverter');
+      const { title } = state;
+      return { ...state, title: title.split('').reverse().join('') };
+    }
+  }
+  console.log('NENHUMA ACTION ENCONTRADA!');
+  return { ...state };
+};
 
 function App() {
+  const [state, dispatch] = useReducer(reducer, globalState);
+  const { counter, title, body } = state;
   return (
-    <AppContext>
-      <Div />
-    </AppContext>
+    <div>
+      <h1>
+        {title} {counter} {body}
+      </h1>
+      <button onClick={() => dispatch({ type: 'muda', payload: new Date().toLocaleDateString('pt-BR') })}>Mude!</button>
+      <button onClick={() => dispatch({ type: 'inverter' })}>Inverta!</button>
+      <button onClick={() => dispatch({ type: 'none' })}>nrh</button>
+    </div>
   );
 }
 
